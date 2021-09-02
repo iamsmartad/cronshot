@@ -206,7 +206,6 @@ func checkAPIGroup(resource string) {
 				groupVersionResource.Resource = ble.Name
 				watchResources[resource] = groupVersionResource
 			}
-
 		}
 	}
 }
