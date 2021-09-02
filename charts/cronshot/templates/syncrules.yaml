@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: snapshotrules
+  namespace: {{ .Release.Namespace }}
+data:
+  snapshotrules.yaml: |-
+{{ toYaml .Values.snapshotrules | indent 4 }}
