@@ -22,5 +22,7 @@ deploy:
         chartPath: charts/cronshot
         artifactOverrides:
           image: cronshot
+        valuesFiles:
+          - "skaffold-dev-values.yaml"
         imageStrategy:
           helm: {}
