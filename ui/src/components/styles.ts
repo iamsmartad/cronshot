@@ -1,17 +1,8 @@
 import { makeStyles } from "@material-ui/core/styles";
-import purple from '@material-ui/core/colors/purple';
-import green from '@material-ui/core/colors/green';
+
 const drawerWidth = 260;
 
 export const useStyles = makeStyles((theme?: any) => ({
-  palette: {
-    primary: {
-      main: purple[500],
-    },
-    secondary: {
-      main: green[500],
-    },
-  },
   root: {
     display: "flex",
   },

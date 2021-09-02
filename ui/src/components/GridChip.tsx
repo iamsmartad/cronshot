@@ -1,9 +1,11 @@
-import { Grid, Tooltip, Avatar, Chip } from "@material-ui/core";
+import {Grid, Tooltip, Avatar, Chip} from "@material-ui/core";
+
 type GridChipProps = {
   label?: string;
   title: string;
 };
-const GridChip = ({ label, title }: GridChipProps) => {
+
+const GridChip = ({label, title}: GridChipProps) => {
   return (
     <Grid item>
       <Tooltip title={title} arrow>

@@ -1,17 +1,13 @@
-import { useState } from "react";
-import {
-  Grid,
-  Collapse,
-  CardActions,
-  Button,
-  Divider,
-} from "@material-ui/core";
-import { YAMLCodeBlock } from "./YAMLCodeBlock";
+import {useState} from "react";
+import {Grid, Collapse, CardActions, Button, Divider} from "@material-ui/core";
+
+import {YAMLCodeBlock} from "./YAMLCodeBlock";
+
 type Props = {
   yamlobj: any;
 };
 
-export const CardActionFooterCodeBlock = ({ yamlobj }: Props) => {
+export const CardActionFooterCodeBlock = ({yamlobj}: Props) => {
   const [showYAML, setShowYAML] = useState(false);
   return (
     <>

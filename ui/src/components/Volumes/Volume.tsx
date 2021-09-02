@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from "react";
 import {
   Button,
   Card,
@@ -11,7 +11,6 @@ import {
   Collapse,
   Divider,
   Badge,
-  CardActions,
 } from "@material-ui/core";
 import {
   Add as AddIcon,
@@ -21,18 +20,15 @@ import {
   FileCopy as FileCopyIcon,
 } from "@material-ui/icons";
 
-import { WebSocketObject } from "../myTypes";
+import {WebSocketObject} from "../myTypes";
 import GridChip from "../GridChip";
-import { CardActionFooterCodeBlock } from "../CodeBlocks/CardActionFooterCodeBlock";
-
-// import { useStyles } from "../styles";
+import {CardActionFooterCodeBlock} from "../CodeBlocks/CardActionFooterCodeBlock";
 
 type Props = {
   volume: WebSocketObject;
 };
 
-export const Volume = ({ volume }: Props) => {
-  // const classes = useStyles();
+export const Volume = ({volume}: Props) => {
   const [showSnapshots, setShowSnapshots] = useState(false);
   return (
     <Grid container direction="row" spacing={2}>
@@ -149,10 +145,7 @@ type VolumeNamspaceProps = {
   volumes: WebSocketObject[];
 };
 
-export const VolumeNameSpace = ({
-  namespace,
-  volumes,
-}: VolumeNamspaceProps) => {
+export const VolumeNameSpace = ({namespace, volumes}: VolumeNamspaceProps) => {
   const [showVolumes, setShowVolumes] = useState(false);
   return (
     <Grid container spacing={2}>

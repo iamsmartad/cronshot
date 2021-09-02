@@ -1,18 +1,16 @@
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-// import Chart from "../Widgets/Chart";
-// import Usage from "../Widgets/Usage";
+import {Grid, Paper} from "@material-ui/core";
+
 import VolumesWidget from "../Volumes/VolumesWidget";
 import SnapshotsWidget from "../Snapshots/SnapshotsWidget";
-import { WebSocketObject } from "../myTypes";
-import { useStyles } from "../styles";
+import {WebSocketObject} from "../myTypes";
+import {useStyles} from "../styles";
 
 type Props = {
   volumes: WebSocketObject[];
   snapshots: WebSocketObject[];
 };
 
-export default function Dashboard({ volumes, snapshots }: Props) {
+export default function Dashboard({volumes, snapshots}: Props) {
   const classes = useStyles();
   return (
     <>

@@ -1,13 +1,19 @@
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import Typography from "@material-ui/core/Typography";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  ListItemIcon,
+} from "@material-ui/core";
+
+import {
+  Menu as MenuIcon,
+  WifiOff as WifiOffIcon,
+  Wifi as WifiIcon,
+} from "@material-ui/icons";
+
 import clsx from "clsx";
-import { useStyles } from "../styles";
-import WifiOffIcon from "@material-ui/icons/WifiOff";
-import WifiIcon from "@material-ui/icons/Wifi";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
+import {useStyles} from "../styles";
 
 type Props = {
   open: boolean;
@@ -15,7 +21,7 @@ type Props = {
   handleDrawerOpen: any;
 };
 
-const Navbar = ({ open, handleDrawerOpen, status }: Props) => {
+const Navbar = ({open, handleDrawerOpen, status}: Props) => {
   const classes = useStyles();
 
   return (

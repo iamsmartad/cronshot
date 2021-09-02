@@ -1,10 +1,8 @@
-import { useState } from "react";
+import {useState} from "react";
 import {
   Card,
   Badge,
   CardContent,
-  Typography,
-  Paper,
   Grid,
   Button,
   Fab,
@@ -13,29 +11,27 @@ import {
   IconButton,
   Collapse,
   Divider,
-  CardActions,
 } from "@material-ui/core";
 import {
   Remove as RemoveIcon,
   Add as AddIcon,
   MoreVert as MoreVertIcon,
   Inbox as InboxIcon,
-  FileCopy as FileCopyIcon,
 } from "@material-ui/icons";
 
 // import { useStyles } from "../styles";
-import { WebSocketObject } from "../myTypes";
-import { SnapshotSet } from "./Snapshots";
+import {WebSocketObject} from "../myTypes";
+import {SnapshotSet} from "./Snapshots";
 import GridChip from "../GridChip";
-import { CardActionFooterCodeBlock } from "../CodeBlocks/CardActionFooterCodeBlock";
-import { YAMLCodeBlock } from "../CodeBlocks/YAMLCodeBlock";
+import {CardActionFooterCodeBlock} from "../CodeBlocks/CardActionFooterCodeBlock";
+import {YAMLCodeBlock} from "../CodeBlocks/YAMLCodeBlock";
+
 type Props = {
   snapshot: WebSocketObject;
   snapcontent: WebSocketObject;
   snapclass: WebSocketObject | null;
 };
-
-export default function Snapshot({ snapshot, snapcontent, snapclass }: Props) {
+export default function Snapshot({snapshot, snapcontent, snapclass}: Props) {
   // const classes = useStyles();
   const [showYAML, setShowYAML] = useState(false);
   const [isHiddenContent, setIsHiddenContent] = useState(true);

@@ -1,15 +1,14 @@
-import Grid from "@material-ui/core/Grid";
-import { Volume } from "./Volume";
-import { Title } from "../Title";
-import { useStyles } from "../styles";
-import { WebSocketObject } from "../myTypes";
-import { VolumeNameSpace } from "./Volume";
+import {Grid} from "@material-ui/core";
+
+import {Title} from "../Title";
+import {WebSocketObject} from "../myTypes";
+import {VolumeNameSpace} from "./Volume";
+
 type Props = {
   volumes: WebSocketObject[];
 };
 
-export default function Volumes({ volumes }: Props) {
-  const classes = useStyles();
+export default function Volumes({volumes}: Props) {
   const grouped = volumes.reduce<Record<string, WebSocketObject[]>>((r, a) => {
     r[a.metadata.namespace] = r[a.metadata.namespace] || [];
     r[a.metadata.namespace].push(a);

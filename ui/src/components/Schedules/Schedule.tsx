@@ -1,9 +1,8 @@
-import { useState } from "react";
+import {useState} from "react";
 import {
   Card,
   CardContent,
   Grid,
-  Fab,
   Button,
   IconButton,
   CardHeader,
@@ -11,29 +10,26 @@ import {
   Divider,
   CircularProgress,
 } from "@material-ui/core";
+
 import {
-  Edit as EditIcon,
   Schedule as ScheduleIcon,
   MoreVert as MoreVertIcon,
 } from "@material-ui/icons";
 
-import { CodeBlock, monoBlue } from "react-code-blocks";
-import YAML from "yaml";
 import cronstrue from "cronstrue";
 
-import { WebSocketObject, DeleteScheduleProps } from "../myTypes";
+import {WebSocketObject, DeleteScheduleProps} from "../myTypes";
 import GridChip from "../GridChip";
-import { CardActionFooterCodeBlock } from "../CodeBlocks/CardActionFooterCodeBlock";
-import { YAMLCodeBlock } from "../CodeBlocks/YAMLCodeBlock";
+import {CardActionFooterCodeBlock} from "../CodeBlocks/CardActionFooterCodeBlock";
 
 // import { useStyles } from "../styles";
 
 type Props = {
   schedule: WebSocketObject;
-  deleteSchedule: ({ name, namespace }: DeleteScheduleProps) => void;
+  deleteSchedule: ({name, namespace}: DeleteScheduleProps) => void;
 };
 
-export default function Schedule({ schedule, deleteSchedule }: Props) {
+export default function Schedule({schedule, deleteSchedule}: Props) {
   // const classes = useStyles();
   const [pendingDelete, setPendingDelete] = useState(false);
   return (

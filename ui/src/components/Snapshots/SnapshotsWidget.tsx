@@ -7,16 +7,14 @@ import {
   Table,
 } from "@material-ui/core";
 
-import { Title } from "../Title";
-import { WebSocketObject } from "../myTypes";
-// import { useStyles } from "../styles";
+import {Title} from "../Title";
+import {WebSocketObject} from "../myTypes";
 
 type Props = {
   snapshots: WebSocketObject[];
 };
 
-export default function SnapshotsWidget({ snapshots }: Props) {
-  // const classes = useStyles();
+export default function SnapshotsWidget({snapshots}: Props) {
   return (
     <React.Fragment>
       <Title>Overview Snapshots</Title>

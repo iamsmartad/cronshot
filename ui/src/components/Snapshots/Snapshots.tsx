@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import Snapshot, { SnapshotNameSpace } from "./Snapshot";
+import {useEffect, useState} from "react";
 import Grid from "@material-ui/core/Grid";
-import { Title } from "../Title";
-// import { useStyles } from "../styles";
-import { WebSocketObject } from "../myTypes";
+
+import {SnapshotNameSpace} from "./Snapshot";
+import {Title} from "../Title";
+import {WebSocketObject} from "../myTypes";
 
 type Props = {
   snapshots: WebSocketObject[];
@@ -22,7 +22,6 @@ export default function Snapshots({
   snapshotcontents,
   snapclasses,
 }: Props) {
-  // const classes = useStyles();
   const [snapshotSet, setSnapshotSet] = useState<SnapshotSet[]>([]);
   const grouped = snapshotSet.reduce<Record<string, SnapshotSet[]>>((r, a) => {
     r[a.snapshot.metadata.namespace] = r[a.snapshot.metadata.namespace] || [];

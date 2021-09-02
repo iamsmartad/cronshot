@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import { Title } from "../Title";
-import Grid from "@material-ui/core/Grid";
+import {useState} from "react";
+import {Grid, Fab} from "@material-ui/core";
+import {Add as AddIcon, Remove as RemoveIcon} from "@material-ui/icons";
+
+import {Title} from "../Title";
 import Schedule from "./Schedule";
 import CreateScheduleForm from "./CreateScheduleForm";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
-import RemoveIcon from "@material-ui/icons/ExpandLess";
-// import EditIcon from "@material-ui/icons/Edit";
-// import { useStyles } from "../styles";
 import {
   WebSocketObject,
   AddScheduleProps,
@@ -17,8 +14,8 @@ import {
 type Props = {
   schedules: WebSocketObject[];
   volumes: WebSocketObject[];
-  addSchedule: ({ ...any }: AddScheduleProps) => void;
-  deleteSchedule: ({ ...any }: DeleteScheduleProps) => void;
+  addSchedule: ({...any}: AddScheduleProps) => void;
+  deleteSchedule: ({...any}: DeleteScheduleProps) => void;
 };
 
 export default function Schedules({

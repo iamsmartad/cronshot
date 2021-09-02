@@ -1,5 +1,5 @@
-import { PieChart, Pie, ResponsiveContainer } from "recharts";
-import { WebSocketObject } from "../myTypes";
+import {PieChart, Pie, ResponsiveContainer} from "recharts";
+import {WebSocketObject} from "../myTypes";
 
 function calcSize(obj: WebSocketObject) {
   if (typeof obj.spec != "undefined") {
@@ -11,17 +11,12 @@ function calcSize(obj: WebSocketObject) {
   return 0;
 }
 
-type DataRequest = {
-  name: string;
-  value: number;
-};
-
 function getStorageRequests(volumes: WebSocketObject[]) {
   var dataRequests = [{}];
   volumes.forEach((element) => {
     dataRequests = [
       ...dataRequests,
-      { name: element.metadata.name, value: calcSize(element) },
+      {name: element.metadata.name, value: calcSize(element)},
     ];
   });
   return dataRequests;
@@ -30,7 +25,7 @@ function getStorageRequests(volumes: WebSocketObject[]) {
 type Props = {
   volumes: WebSocketObject[];
 };
-export default function Chart({ volumes }: Props) {
+export default function Chart({volumes}: Props) {
   const dataRequests = getStorageRequests(volumes);
 
   return (

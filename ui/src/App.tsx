@@ -126,7 +126,6 @@ function App() {
     socket.onmessage = (e) => {
       const wsObjects = e.data.split("\n");
       for (var x in wsObjects) {
-        var d: WebSocketObject;
         const eventType = JSON.parse(wsObjects[x])?.Event;
         const eventObject: WebSocketObject = JSON.parse(wsObjects[x])?.Object;
         switch (eventType) {

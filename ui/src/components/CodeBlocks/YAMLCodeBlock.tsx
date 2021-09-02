@@ -1,11 +1,11 @@
-import { CodeBlock, monoBlue } from "react-code-blocks";
+import {CodeBlock, monoBlue} from "react-code-blocks";
 import YAML from "yaml";
 
 type Props = {
   yamlobj: any;
 };
 
-export const YAMLCodeBlock = ({ yamlobj }: Props) => {
+export const YAMLCodeBlock = ({yamlobj}: Props) => {
   return (
     <CodeBlock
       text={YAML.stringify(yamlobj)}

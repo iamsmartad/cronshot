@@ -1,7 +1,6 @@
-import React, { FunctionComponent } from "react";
-import PropTypes from "prop-types";
+import {FunctionComponent} from "react";
 import Typography from "@material-ui/core/Typography";
-import { Variant } from "@material-ui/core/styles/createTypography";
+import {Variant} from "@material-ui/core/styles/createTypography";
 
 type Props = {
   variant?: Variant | undefined;
@@ -19,7 +18,3 @@ export const Title: FunctionComponent<Props> = (props) => {
     </Typography>
   );
 };
-
-// Title.propTypes = {
-//   children: PropTypes.node,
-// };

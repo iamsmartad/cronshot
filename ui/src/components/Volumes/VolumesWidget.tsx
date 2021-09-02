@@ -1,19 +1,21 @@
 import React from "react";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import { Title } from "../Title";
-import { WebSocketObject } from "../myTypes";
-// import { useStyles } from "../styles";
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@material-ui/core";
+
+import {Title} from "../Title";
+import {WebSocketObject} from "../myTypes";
 
 type Props = {
   volumes: WebSocketObject[];
 };
 
-export default function VolumesWidget({ volumes }: Props) {
-  // const classes = useStyles();
+export default function VolumesWidget({volumes}: Props) {
   return (
     <React.Fragment>
       <Title>Overview Volumes</Title>
