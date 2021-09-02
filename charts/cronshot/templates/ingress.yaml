@@ -21,4 +21,4 @@ spec:
             pathType: ImplementationSpecific
   tls:
     - hosts:
-        - {{- .Values.fqdn.server}}
+        - {{ .Values.fqdn.server}}
