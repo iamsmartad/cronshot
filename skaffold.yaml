@@ -1,0 +1,26 @@
+apiVersion: skaffold/v2beta21
+kind: Config
+metadata:
+  name: cronshot
+build:
+  artifacts:
+    - image: cronshot
+      docker:
+        dockerfile: Dockerfile
+        target: runner
+  tagPolicy:
+    sha256: {}
+  local:
+    push: true
+    useBuildkit: true
+    concurrency: 0
+deploy:
+  helm:
+    releases:
+      - name: cronshot
+        namespace: truth
+        chartPath: charts/cronshot
+        artifactOverrides:
+          image: cronshot
+        imageStrategy:
+          helm: {}
