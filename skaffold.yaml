@@ -26,3 +26,9 @@ deploy:
           - "skaffold-dev-values.yaml"
         imageStrategy:
           helm: {}
+profiles:
+  - name: "static"
+    patches:
+      - op: replace
+        path: /build/artifacts/0/docker/target
+        value: runner-production

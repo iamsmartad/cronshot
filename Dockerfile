@@ -12,5 +12,17 @@ RUN --mount=type=cache,target=/root/.cache/go-build \
 FROM alpine:latest as runner
 RUN apk --no-cache add ca-certificates tzdata
 WORKDIR /root/
-COPY --from=builder /app/cronshot .
+COPY --from=builder /app/cronshot /root/
+CMD ["./cronshot"]
+
+FROM node as uibuilder 
+WORKDIR /app/
+COPY ui /app
+RUN yarn build -p
+
+FROM alpine:latest as runner-production
+RUN apk --no-cache add ca-certificates tzdata
+WORKDIR /root/
+COPY --from=builder /app/cronshot /root/
+COPY --from=uibuilder /app/build /root/web/
 CMD ["./cronshot"]

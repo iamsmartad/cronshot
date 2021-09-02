@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"path"
 	"strings"
 	"time"
 
@@ -37,11 +38,11 @@ const (
 
 var (
 	newline       = []byte{'\n'}
-	commandbase64 = flag.String("commandbase64", "e30=", "run as agent to perform snapshots")
+	commandbase64 = flag.String("commandbase64", "e30=", "pass base64 encoded command for agent")
 	agent         = flag.Bool("agent", false, "run as agent to perform snapshots")
 	addr          = flag.String("addr", "0.0.0.0:8080", "http service address")
-
-	upgrader = websocket.Upgrader{
+	directory     = flag.String("directory", "web", "the folder containing web assets")
+	upgrader      = websocket.Upgrader{
 		ReadBufferSize:  maxMessageSize,
 		WriteBufferSize: maxMessageSize,
 	}
@@ -159,25 +160,24 @@ func ws(w http.ResponseWriter, r *http.Request) {
 	reader(c)
 }
 
-func main() {
-	flag.Parse()
-
-	for k := range watchResources {
-		checkAPIGroup(k)
-		log.Warnf("%v/%v", watchResources[k].GroupResource(), watchResources[k].GroupVersion())
+func serveFiles(w http.ResponseWriter, r *http.Request) {
+	fs := http.FileServer(http.Dir(*directory))
+	// If the requested file exists then return it
+	// otherwise return index.html (fileserver default page)
+	if r.URL.Path != "/" {
+		fullPath := "./" + *directory + "/" + strings.TrimPrefix(path.Clean(r.URL.Path), "/")
+		_, err := os.Stat(fullPath)
+		if err != nil {
+			if !os.IsNotExist(err) {
+				panic(err)
+			}
+			// Requested file does not exist
+			// so we return the default (resolves to index.html)
+			r.URL.Path = "/"
+		}
+		log.Warnf(r.URL.Path)
 	}
-
-	if *agent {
-		log.Infof("Running %s once (as agent)", appname)
-		runAsAgent(*commandbase64)
-		os.Exit(0)
-	}
-
-	http.HandleFunc("/ws", ws)
-	// http.Handle("/home", http.FileServer(http.Dir(*directory)))
-
-	log.Infof("starting server")
-	log.Fatal(http.ListenAndServe(*addr, nil))
+	fs.ServeHTTP(w, r)
 }
 
 func checkAPIGroup(resource string) {
@@ -208,4 +208,25 @@ func checkAPIGroup(resource string) {
 			}
 		}
 	}
+}
+
+func main() {
+	flag.Parse()
+
+	for k := range watchResources {
+		checkAPIGroup(k)
+		log.Warnf("%v/%v", watchResources[k].GroupResource(), watchResources[k].GroupVersion())
+	}
+
+	if *agent {
+		log.Infof("Running %s once (as agent)", appname)
+		runAsAgent(*commandbase64)
+		os.Exit(0)
+	}
+
+	http.HandleFunc("/ws", ws)
+	http.HandleFunc("/", serveFiles)
+
+	log.Infof("starting server")
+	log.Fatal(http.ListenAndServe(*addr, nil))
 }

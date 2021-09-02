@@ -8,8 +8,24 @@ export default function GetSocket(): ReconnectingWebSocket {
     minReconnectionDelay: 1000 + Math.random() * 4000,
     reconnectionDelayGrowFactor: 1.3,
   };
+
+  var loc = window.location;
+
+  // default
+  var new_uri = "ws://localhost:8080/ws"
+
+  // if .env var is set
+  if (process.env.REACT_APP_WS_URL) {
+    new_uri = process.env.REACT_APP_WS_URL
+  }
+
+  // if in production
+  if (process.env.NODE_ENV === "production") {
+      new_uri = "wss://" + loc.host + "/ws";
+  }
+
   var sock = new ReconnectingWebSocket(
-    "wss://snap.iamstudent.dev/ws",
+    new_uri,
     [],
     options
   );

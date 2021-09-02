@@ -31,7 +31,6 @@ import "./index.css";
 function App() {
   const classes = useStyles();
   const [open, setOpen] = useState(true);
-
   const theme = createTheme({
     palette: {
       primary: {
