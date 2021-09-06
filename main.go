@@ -79,7 +79,6 @@ func writer(c *websocket.Conn) error {
 		case wsEvent, ok := <-writeChannel:
 			c.SetWriteDeadline(time.Now().Add(writeWait))
 			if !ok {
-				// The hub closed the channel.
 				c.WriteMessage(websocket.CloseMessage, []byte{})
 				return fmt.Errorf("error reading writeChannel")
 			}
